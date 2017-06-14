@@ -1,14 +1,7 @@
 {% extends "base.html.twig" %}
 {% block content %}
 
-  <script src="https://api.apiary.io/seeds/embed.js"></script>
-  <script type="text/javascript">
-    var embed = new Apiary.Embed({
-      "subdomain": "test10279",
-      "preferences": {
-        "header": ".navbar",
-        "displayHttpMethods": true
-      }
-    });
-  </script>
+  <iframe src="http://docs.test10279.apiary.io/#">
+    <p>If the iframe doesn't load, you can consult the documentation directly in <a href="http://docs.test10279.apiary.io/#">Apiary</a></p>
+  </iframe>
 {% endblock%}
