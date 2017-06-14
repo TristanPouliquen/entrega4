@@ -12,10 +12,10 @@ $app = require __DIR__.'/bootstrap.php';
 
 $app->get('/', function(Application $app){
   return new Response("Hola");
-});
+})->bind('index');
 
-$app->get('/api.html', function(Application $app){
+$app->get('/api', function(Application $app){
   return $app['twig']->render("apidoc.html.twig");
-});
+})->bind("apidoc");
 
 $app->run();
