@@ -1,0 +1,45 @@
+Entity40\Hotel:
+  type: entity
+  table: hoteles
+  repositoryClass: Entity40\HotelRepository
+  indexes:
+    hoteles_pkey:
+      columns: [id]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: SEQUENCE
+      sequenceGenerator:
+        sequenceName: hotel_ai
+        allocationSize: 100
+        initialValue: 1
+  fields:
+    name:
+      type: string
+      column: nombre
+    number_rooms:
+      type: integer
+      column: nro_piezas
+    price_room:
+      type: integer
+      column: precio_pieza
+    star_rating:
+      type: integer
+      column: estrellas
+  oneToOne:
+    address:
+      targetEntity: Entity40\Address
+      joinColumn:
+        name: direccion_id
+        referencedColumnName: id
+        onDelete: CASCADE
+  oneToMany:
+    facilities:
+      targetEntity: Entity40\Facility
+      mappedBy: hotel
+    reservations:
+      orderBy: {'arrival' : 'DESC'}
+      targetEntity: Entity40\Reservation
+      mappedBy: hotel
+

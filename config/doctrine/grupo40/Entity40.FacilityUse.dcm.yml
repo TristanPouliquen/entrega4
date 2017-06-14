@@ -1,0 +1,23 @@
+Entity40\FacilityUse:
+  type: entity
+  table: usos
+  indexes:
+    usos_pkey:
+      columns: [id]
+  id:
+    id:
+      type: integer
+      strategy:
+        generator: SEQUENCE
+      sequenceGenerator:
+        sequenceName: uso_ai
+        allocationSize: 100
+        initialValue: 1
+  fields:
+  manyToOne:
+    facility:
+      targetEntity: Entity40\Facility
+      inversedBy: facilityUses
+    reservation:
+      targetEntity: Entity40\Reservation
+      inversedBy: facilityUses

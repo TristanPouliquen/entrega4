@@ -1,0 +1,37 @@
+Entity37\User:
+  type: entity
+  table: guloja_user
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
+  properties:
+    username:
+      - Email: ~
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: SEQUENCE
+      sequenceGenerator:
+        sequenceName: guloja_user_id_seq
+        allocationSize: 100
+        initialValue: 1
+    username:
+      column: email
+      type: string
+      length: 100
+      unique: true
+      email: true
+    password:
+      type: string
+      length: 255
+    roles:
+      type: array
+      length: 255
+    salt:
+      type: string
+      length: 255
+    created_at:
+      type: datetime
+    updated_at:
+      type: datetime

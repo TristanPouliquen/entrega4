@@ -49,7 +49,7 @@ $app->register(new DoctrineOrmServiceProvider, [
                 [
                     'type' => 'yml',
                     'namespace' => 'Entity37',
-                    'path' => __DIR__ . '/../config/doctrine/grupo37'
+                    'path' => __DIR__ . '/config/doctrine/grupo37'
                 ]
             ]
         ],
@@ -59,12 +59,12 @@ $app->register(new DoctrineOrmServiceProvider, [
                 [
                     'type' => 'yml',
                     'namespace' => 'Entity40',
-                    'path' => __DIR__ . '/../config/doctrine/grupo40'
+                    'path' => __DIR__ . '/config/doctrine/grupo40'
                 ]
             ]
         ]
     ],
-    'orm.proxies_dir' => __DIR__.'/../var/cache/doctrine/proxies'
+    'orm.proxies_dir' => __DIR__.'/var/cache/doctrine/proxies'
 ]);
 
 return $app;

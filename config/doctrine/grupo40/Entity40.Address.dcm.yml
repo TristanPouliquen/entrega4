@@ -1,0 +1,29 @@
+Entity40\Address:
+  type: entity
+  table: direcciones
+  repositoryClass: Entity40\AddressRepository
+  indexes:
+    direcciones_pkey:
+      columns: [id]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: SEQUENCE
+      sequenceGenerator:
+        sequenceName: direccion_auto_increment
+        allocationSize: 100
+        initialValue: 1
+  fields:
+    street:
+      type: string
+      column: calle
+    number:
+      type: integer
+      column: numero
+    city:
+      type: string
+      column: ciudad
+    country:
+      type: string
+      column: pais

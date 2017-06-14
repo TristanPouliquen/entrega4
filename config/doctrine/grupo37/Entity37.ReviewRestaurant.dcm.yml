@@ -1,0 +1,33 @@
+Entity37\ReviewRestaurant:
+  type: entity
+  table: criticarestaurante
+  repositoryClass: Entity37\ReviewRestaurantRepository
+  id:
+    review:
+      associationKey: true
+    author:
+      associationKey: true
+    restaurant:
+      associationKey: true
+  indexes:
+    criticarestaurante_pkey:
+      columns: [idcritica]
+  oneToOne:
+    review:
+      targetEntity: Entity37\Review
+      joinColumn:
+        name: idcritica
+        referencedColumnName: idcritica
+  manyToOne:
+    author:
+      targetEntity: Entity37\Client
+      inversedBy: reviews
+      joinColumn:
+        name: telefono
+        referencedColumnName: telefono
+    restaurant:
+      targetEntity: Entity37\Restaurant
+      inversedBy: reviews
+      joinColumn:
+        name: rnombre
+        referencedColumnName: rnombre

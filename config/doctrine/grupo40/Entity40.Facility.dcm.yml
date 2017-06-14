@@ -1,0 +1,34 @@
+Entity40\Facility:
+  type: entity
+  table: facilidades
+  indexes:
+    facilidades_pkey:
+      columns: [id]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: SEQUENCE
+      sequenceGenerator:
+        sequenceName: facilidad_ai
+        allocationSize: 100
+        initialValue: 1
+  fields:
+    price:
+      type: integer
+      column: precio
+    type:
+      type: string
+      column: tipo
+  manyToOne:
+    hotel:
+      targetEntity: Entity40\Hotel
+      inversedBy: facilities
+      joinColumn:
+        name: hotel_id
+        referencedColumnName: id
+  oneToMany:
+    facilityUses:
+      targetEntity: Entity40\FacilityUse
+      mappedBy: facility
+      cascade: ['persist']

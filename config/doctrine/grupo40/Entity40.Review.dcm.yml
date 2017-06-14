@@ -1,0 +1,26 @@
+Entity40\Review:
+  type: entity
+  table: criticas
+  indexes:
+    criticas_pkey:
+      columns: [id]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: SEQUENCE
+      sequenceGenerator:
+        sequenceName: critica_ai
+        allocationSize: 100
+        initialValue: 1
+  fields:
+    description:
+      type: string
+      column: descripcion
+    rating:
+      type: integer
+      column: nota
+  oneToOne:
+    reservation:
+      targetEntity: Entity40\Reservation
+      mappedBy: review
