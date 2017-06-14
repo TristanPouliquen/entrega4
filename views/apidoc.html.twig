@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+  <script src="https://api.apiary.io/seeds/embed.js"></script>
+  <script type="text/javascript">
+    var embed = new Apiary.Embed({
+      "subdomain": "test10279",
+      "preferences": {
+        "header": ".navbar",
+        "displayHttpMethods": true
+      }
+    });
+  </script>
+{% endblock%}
