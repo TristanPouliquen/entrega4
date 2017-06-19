@@ -14,12 +14,20 @@ $app->get('/', function(Application $app){
   $xml = simplexml_load_file("http://jreutter.sitios.ing.uc.cl/alias.xml");
   $result = $xml->xpath("//tr[position()>1]/td[1]");
   $documents = array();
-  foreach ($result as $alias) {
-    $url = "http://query17-8.ing.puc.cl/wordInContent?keyword=" + $alias[0];
-    $ch = curl_init($url);
+  $aliases = array();
+  foreach($result as $element){
+    array_push($aliases, $element->__toString());
+  }
+  foreach ($aliases as $alias) {
+    $url = "http://query17-8.ing.puc.cl/wordInContent?keyword=" + $alias;
+    $ch = curl_init();
+    curl_setopt($cj, CURLOPT_URL, $url);
+    curl_setopt($cj, CURLOPT_HEADER, 0);
     $json = curl_exec($ch);
-    $documents[$alias[0]] = json_decode($json);
+    var_dump($json);
+    $documents[$alias] = json_decode($json);
     curl_close($ch);
+    die;
   }
   return $app['twig']->render("index.html.twig", [
     'aliases' => $result,

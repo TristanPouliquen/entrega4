@@ -6,7 +6,7 @@
         <h1>Aliases de bandas de criminales y mensajes capturados sobre ellos</h1>
       </div>
       {% for name in aliases %}
-        {% include "partials/messages.html.twig" with {'alias': name[0], 'messages': messages[name[0]]} %}
+        {% include "partials/messages.html.twig" with {'alias': name, 'messages': messages[name} %}
       {% endfor %}
     </div>
   </div>
