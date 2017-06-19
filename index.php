@@ -30,7 +30,7 @@ $app->get('/', function(Application $app){
     {
         $json = curl_error($ch);
     }
-    $documents[$alias] = $json;
+    $documents[$alias] = json_decode($json);
     curl_close($ch);
   }
   return $app['twig']->render("index.html.twig", [
