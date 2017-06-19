@@ -19,11 +19,12 @@ $app->get('/', function(Application $app){
     array_push($aliases, $element->__toString());
   }
   foreach ($aliases as $alias) {
-    $url = "http://query17-8.ing.puc.cl/wordInContent?keyword=" + $alias;
-    $json = file_get_contents($url);
-    var_dump($json);
-    die;
+    $url = urlencode("http://query17-8.ing.puc.cl/wordInContent?keyword=\"" + $alias + "\"");
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $json = curl_exec($ch);
     $documents[$alias] = json_decode($json);
+    curl_close($ch);
   }
   return $app['twig']->render("index.html.twig", [
     'aliases' => $result,
