@@ -22,9 +22,14 @@ $app->get('/', function(Application $app){
     $url = urlencode("http://query17-8.ing.puc.cl/wordInContent?keyword=\"" + $alias + "\"");
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $json = curl_exec($ch);
-    $documents[$alias] = json_decode($json);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+    if( ! $json = curl_exec($ch))
+    {
+        $json = curl_error($ch);
+    }
+    $documents[$alias] = $json;
     curl_close($ch);
   }
   return $app['twig']->render("index.html.twig", [
@@ -38,3 +43,22 @@ $app->get('/api', function(Application $app){
 })->bind("apidoc");
 
 $app->run();
+
+function curl_get($url, array $get = NULL, array $options = array())
+{
+    $defaults = array(
+        CURLOPT_URL => $url. (strpos($url, '?') === FALSE ? '?' : ''). http_build_query($get),
+        CURLOPT_HEADER => 0,
+        CURLOPT_RETURNTRANSFER => TRUE,
+        CURLOPT_TIMEOUT => 4
+    );
+
+    $ch = curl_init();
+    curl_setopt_array($ch, ($options + $defaults));
+    if( ! $result = curl_exec($ch))
+    {
+        trigger_error(curl_error($ch));
+    }
+    curl_close($ch);
+    return $result;
+}
