@@ -21,8 +21,8 @@ $app->get('/', function(Application $app){
   foreach ($aliases as $alias) {
     $url = "http://query17-8.ing.puc.cl/wordInContent?keyword=" + $alias;
     $ch = curl_init();
-    curl_setopt($cj, CURLOPT_URL, $url);
-    curl_setopt($cj, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
     $json = curl_exec($ch);
     var_dump($json);
     $documents[$alias] = json_decode($json);
