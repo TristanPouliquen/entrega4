@@ -20,14 +20,10 @@ $app->get('/', function(Application $app){
   }
   foreach ($aliases as $alias) {
     $url = "http://query17-8.ing.puc.cl/wordInContent?keyword=" + $alias;
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    $json = curl_exec($ch);
+    $json = file_get_contents($url);
     var_dump($json);
-    $documents[$alias] = json_decode($json);
-    curl_close($ch);
     die;
+    $documents[$alias] = json_decode($json);
   }
   return $app['twig']->render("index.html.twig", [
     'aliases' => $result,
