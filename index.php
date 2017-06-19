@@ -19,7 +19,7 @@ $app->get('/', function(Application $app){
     array_push($aliases, $element->__toString());
   }
   foreach ($aliases as $alias) {
-    $url = urlencode("http://query17-8.ing.puc.cl/wordInContent?keyword=\"" . $alias . "\"");
+    $url = "http://query17-8.ing.puc.cl/wordInContent?keyword=\"" . urlencode($alias) . "\"";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -30,7 +30,7 @@ $app->get('/', function(Application $app){
     {
         $json = curl_error($ch);
     }
-    $documents[$alias] = json_decode($json);
+    $documents[$alias] = json_decode($json, true);
     curl_close($ch);
   }
   return $app['twig']->render("index.html.twig", [

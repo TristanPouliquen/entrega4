@@ -5,7 +5,7 @@
   <div class="panel-body">
     {% for message in messages %}
       <ul>
-        <li><b>Fecha:</b> {{ message.fecha|date('dd/mm/yyyy') }}</li>
+        <li><b>Fecha:</b> {{ message.fecha|date('d/m/y') }}</li>
         <li><b>Numero de emision:</b> {{ message.numero }}</li>
         <li><b>Ciudad de emision:</b> {{ message.ciudad }}</li>
         <li><b>Contenido:</b> {{ message.contenido }}</li>
