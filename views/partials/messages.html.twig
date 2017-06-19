@@ -3,7 +3,7 @@
     <h3 class="panel-title">Banda {{ alias }} - {{ messages|length }} mensajes detectados</h3>
   </div>
   <div class="panel-body">
-    {% for message in message %}
+    {% for message in messages %}
       <ul>
         <li><b>Fecha:</b> {{ message.fecha|date('dd/mm/yyyy') }}</li>
         <li><b>Numero de emision:</b> {{ message.numero }}</li>
