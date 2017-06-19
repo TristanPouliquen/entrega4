@@ -13,8 +13,13 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <a href="{{ path('index') }}" class="navbar-btn nav-button">Portada</a>
-      <a href="{{ path('apidoc') }}" class="navbar-btn nav-button">Documentacion API</a>
+      <ul class="nav navbar-nav">
+        <li class="{% if global.request.attributes.get('_route') == 'index' %}active{% endif %}">
+          <a href="{{ path('index') }}" class="navbar-btn nav-button">Portada</a></li>
+        <li class="{% if global.request.attributes.get('_route') == 'apidoc' %}active{% endif %}">
+          <a href="{{ path('apidoc') }}" class="navbar-btn nav-button">Documentacion API</a>
+        </li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="page-header">
+        <h1>Aliases de bandas de criminales y mensajes capturados sobre ellos</h1>
+      </div>
+      {% for name in aliases %}
+        {% include "partials/messages.html.twig" with {'alias': name[0], 'messages': messages[name[0]]} %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock%}
