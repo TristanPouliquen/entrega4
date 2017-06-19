@@ -27,7 +27,7 @@ $app->get('/', function(Application $app){
     curl_close($ch);
   }
   return $app['twig']->render("index.html.twig", [
-    'aliases' => $result,
+    'aliases' => $aliases,
     'messages' => $documents
   ]);
 })->bind('index');
