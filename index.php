@@ -22,6 +22,7 @@ $app->get('/', function(Application $app){
     $url = urlencode("http://query17-8.ing.puc.cl/wordInContent?keyword=\"" + $alias + "\"");
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $json = curl_exec($ch);
     $documents[$alias] = json_decode($json);
     curl_close($ch);
