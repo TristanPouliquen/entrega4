@@ -19,7 +19,7 @@ $app->get('/', function(Application $app){
     array_push($aliases, $element->__toString());
   }
   foreach ($aliases as $alias) {
-    $url = urlencode("http://query17-8.ing.puc.cl/wordInContent?keyword=\"" . $alias . "\"");
+    $url = urlencode("http://query17-8.ing.puc.cl/wordInContent?keyword=\"" + $alias + "\"");
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
