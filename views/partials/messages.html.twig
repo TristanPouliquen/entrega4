@@ -4,12 +4,36 @@
   </div>
   <div class="panel-body">
     {% for message in messages %}
-      <ul>
-        <li><b>Fecha:</b> {{ message.fecha|date('d/m/y') }}</li>
-        <li><b>Numero de emision:</b> {{ message.numero }}</li>
-        <li><b>Ciudad de emision:</b> {{ message.ciudad }}</li>
-        <li><b>Contenido:</b> {{ message.contenido }}</li>
-      </ul>
+      <div class="well">
+        <ul>
+          <li><b>Fecha:</b> {{ message.fecha|date('d/m/y') }}</li>
+          <li><b>Numero de emision:</b> {{ message.numero }}</li>
+          <li><b>Ciudad de emision:</b> {{ message.ciudad }}</li>
+          <li><b>Contenido:</b> {{ message.contenido }}</li>
+        </ul>
+        <hr>
+        <h4>Hoteles en esta ciudad</h4>
+        {% if hotels[message['_id']['$id'] is not null %}
+          <ul>
+            {% for hotel in hotels[message['_id']['$id'] %}
+              <li> {{ hotel.name }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No hay hoteles en esta ciudad</p>
+        {% endif %}
+        <hr>
+        <h4>Restaurantes en esta ciudad</h4>
+        {% if restaurants[message['_id']['$id'] is not null %}
+          <ul>
+            {% for restaurant in restaurants[message['_id']['$id'] %}
+              <li> {{ restaurant.name }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No hay restaurantes en esta ciudad</p>
+        {% endif %}
+      </div>
     {% endfor %}
   </div>
 </div>

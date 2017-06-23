@@ -33,9 +33,20 @@ $app->get('/', function(Application $app){
     $documents[$alias] = json_decode($json, true);
     curl_close($ch);
   }
+
+  $hotels = array();
+  $restaurants = array();
+  foreach($documents as $alias_document){
+    foreach($aliasdocument as $document){
+      $hotels[$document['_id']['$id']] = $app['orm.ems']['grupo40']->getRepository("Entity40\Hotel")->findByCity($document['ciudad']);
+      $restaurants[$document['_id']['$id']] = $app['orm.ems']['grupo37']->getRepository("Entity37\Restaurant")->findByCity($document['ciudad']);
+    }
+  }
   return $app['twig']->render("index.html.twig", [
     'aliases' => $aliases,
-    'messages' => $documents
+    'messages' => $documents,
+    'hotels' => $hotels,
+    'restaurants' => $restaurants
   ]);
 })->bind('index');
 
