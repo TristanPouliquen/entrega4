@@ -10,9 +10,9 @@
         "symfony/doctrine-bridge": "^3.3"
     },
     "autoload": {
-        "psr-4": {
-            "Entity37\\": "entities/",
-            "Entity40\\": "entities/"
+        "psr-0": {
+            "Entity37": "entities/",
+            "Entity40": "entities/"
         }
     }
 }
