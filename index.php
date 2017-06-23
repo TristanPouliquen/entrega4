@@ -37,7 +37,7 @@ $app->get('/', function(Application $app){
   $hotels = array();
   $restaurants = array();
   foreach($documents as $alias_document){
-    foreach($aliasdocument as $document){
+    foreach($alias_document as $document){
       $hotels[$document['_id']['$id']] = $app['orm.ems']['grupo40']->getRepository("Entity40\Hotel")->findByCity($document['ciudad']);
       $restaurants[$document['_id']['$id']] = $app['orm.ems']['grupo37']->getRepository("Entity37\Restaurant")->findByCity($document['ciudad']);
     }

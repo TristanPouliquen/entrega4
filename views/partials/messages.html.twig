@@ -13,9 +13,9 @@
         </ul>
         <hr>
         <h4>Hoteles en esta ciudad</h4>
-        {% if hotels[message['_id']['$id'] is not null %}
+        {% if hotels[message['_id']['$id']] is not null %}
           <ul>
-            {% for hotel in hotels[message['_id']['$id'] %}
+            {% for hotel in hotels[message['_id']['$id']] %}
               <li> {{ hotel.name }}</li>
             {% endfor %}
           </ul>
@@ -24,9 +24,9 @@
         {% endif %}
         <hr>
         <h4>Restaurantes en esta ciudad</h4>
-        {% if restaurants[message['_id']['$id'] is not null %}
+        {% if restaurants[message['_id']['$id']] is not null %}
           <ul>
-            {% for restaurant in restaurants[message['_id']['$id'] %}
+            {% for restaurant in restaurants[message['_id']['$id']] %}
               <li> {{ restaurant.name }}</li>
             {% endfor %}
           </ul>
